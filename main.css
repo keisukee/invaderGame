@@ -1,0 +1,13 @@
+ul {
+  list-style: none;
+}
+.invader {
+  width: 30px;
+  height: auto;
+}
+
+.invader1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
