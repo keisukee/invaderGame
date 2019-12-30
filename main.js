@@ -27,7 +27,8 @@ function bulletMove(element, x, y) {
     let distanceOfBulletAndInvaderX = Math.abs(bulletLocation[0] - invaderLocation[0]);
     let distanceOfBulletAndInvaderY = Math.abs(bulletLocation[1] - invaderLocation[1]);
     if (distanceOfBulletAndInvaderX < 20 && distanceOfBulletAndInvaderY < 20) {
-      alert('bang!');
+      element.parentNode.removeChild(element);
+      invader1.parentNode.removeChild(invader1);
     }
     bulletMove(element, x, y);
   }, 1);
