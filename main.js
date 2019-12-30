@@ -23,13 +23,13 @@ function invaderMove() {
   }, 300);
 }
 
-function bulletMove(element) {
+function bulletMove(element, d) {
   setTimeout(function () {
-    distance += 10;
-    // move('invader1', distance, 0);
+    d += 30;
+    move(element, d, 100);
     // move('invader2', distance, 50);
-    bulletMove();
-  }, 300);
+    bulletMove(element, d);
+  }, 1000);
 }
 
 function move(element, newPosY, newPosX) {
@@ -40,7 +40,7 @@ function move(element, newPosY, newPosX) {
 }
 
 function shoot(id) {
-  let bullet = '<i class="fas fa-grip-lines-vertical">' + '</i>';
+  let bullet = '<i class="fas fa-grip-lines-vertical bullets">' + '</i>';
   document.getElementById(id).insertAdjacentHTML('beforeend', bullet);
 }
 
@@ -51,5 +51,11 @@ document.onkeydown = function (e){
   // スペースキーで発射
   if (key_code === 32) {
     shoot('starship');
+    let bullets = document.getElementsByClassName('bullets');
+    let bulletCount = bullets.length;
+    console.log(bulletCount);
+    let movingBullet = bullets[bulletCount - 1];
+    // console.log(movingBullet);
+    bulletMove(movingBullet, 10);
   }
 };
