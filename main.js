@@ -1,11 +1,19 @@
-let invaders = document.getElementsByClassName('invader');
-
 let posY = 0;
 let posX = 0;
 let distance = 0;
 
 let invader1 = document.getElementById('invader1');
 let invader2 = document.getElementById('invader2');
+
+function invaderPopup() {
+  let invaders = document.getElementById('invaders');
+  let newInvader = document.createElement("li");
+  let newInvaderImg = document.createElement("img");
+  newInvaderImg.setAttribute("src", "invader.svg");
+  newInvaderImg.setAttribute("class", "invader");
+  newInvader.appendChild(newInvaderImg);
+  invaders.appendChild(newInvader);
+}
 
 invaderMove();
 
@@ -26,7 +34,7 @@ function bulletMove(element, x, y) {
     let invaderLocation = detectMomentLocation(invader1);
     let distanceOfBulletAndInvaderX = Math.abs(bulletLocation[0] - invaderLocation[0]);
     let distanceOfBulletAndInvaderY = Math.abs(bulletLocation[1] - invaderLocation[1]);
-    if (distanceOfBulletAndInvaderX < 20 && distanceOfBulletAndInvaderY < 20) {
+    if (distanceOfBulletAndInvaderX < 15 && distanceOfBulletAndInvaderY < 15) {
       element.parentNode.removeChild(element);
       invader1.parentNode.removeChild(invader1);
     }
