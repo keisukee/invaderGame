@@ -5,23 +5,49 @@ let distance = 0;
 let invader1 = document.getElementById('invader1');
 let invader2 = document.getElementById('invader2');
 
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
 function invaderPopup() {
   let invaders = document.getElementById('invaders');
   let newInvader = document.createElement("li");
   let newInvaderImg = document.createElement("img");
+
   newInvaderImg.setAttribute("src", "invader.svg");
   newInvaderImg.setAttribute("class", "invader");
+  newInvader.style.position = 'absolute';
+
+  newInvader.style.top = getRandomInt(100) * 10;
+  newInvader.style.left = getRandomInt(100) * 10;
+
   newInvader.appendChild(newInvaderImg);
   invaders.appendChild(newInvader);
+}
+
+function generateInvaders() {
+  setTimeout(function () {
+    invaderPopup();
+    generateInvaders();
+  }, 1000);
+}
+
+// generateInvaders();
+
+for (let i = 0; i < 10; i++) {
+  invaderPopup();
 }
 
 invaderMove();
 
 function invaderMove() {
   setTimeout(function () {
+    let invaders = document.getElementsByClassName('invader');
     distance += 10;
-    move(invader1, 0, distance);
-    move(invader2, 30, distance);
+    console.log("invaders", invaders.length);
+    for (let i = 0; i < invaders.length; i++) {
+      move(invaders[i], i * 10, distance);
+    }
     invaderMove();
   }, 300);
 }
