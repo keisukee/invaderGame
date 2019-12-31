@@ -38,17 +38,17 @@ for (let i = 0; i < 10; i++) {
   invaderPopup();
 }
 
-invaderMove();
+let invaders = document.getElementsByClassName('invader');
 
-function invaderMove() {
+for (let i = 0; i < invaders.length; i++) {
+  invaderMove(invaders[i].parentNode);
+}
+
+function invaderMove(element) {
   setTimeout(function () {
-    let invaders = document.getElementsByClassName('invader');
     distance += 10;
-    console.log("invaders", invaders.length);
-    for (let i = 0; i < invaders.length; i++) {
-      move(invaders[i], i * 10, distance);
-    }
-    invaderMove();
+    move(element, getRandomInt(100) * 10, distance);
+    invaderMove(element);
   }, 300);
 }
 
