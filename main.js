@@ -5,6 +5,8 @@ let distance = 0;
 let invader1 = document.getElementById('invader1');
 let invader2 = document.getElementById('invader2');
 
+let starship = document.getElementById('starship');
+
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
@@ -86,6 +88,10 @@ document.onkeydown = function (e){
 	if(!e) e = window.event; // レガシー
   let keyCode = e.keyCode;
 
+  let starshipCor = detectMomentLocation(starship);
+  console.log('cordinates', starshipCor);
+  console.log('cordinates', starshipCor);
+
   // console.log(keyCode);
 
   // スペースキー: 32, s: 83 スペースキーだと、打鍵するときに画面が動く可能性あり
@@ -96,6 +102,12 @@ document.onkeydown = function (e){
     let movingBullet = bullets[bulletCount - 1];
     // detectLocation(movingBullet);
     bulletMove(movingBullet, 10, 300);
+  } else if (keyCode === 37) { // ←のとき
+
+    move(starship, starshipCor[0] - 10, starshipCor[1]);
+  } else if (keyCode === 39) { // →のとき
+    move(starship, starshipCor[0] + 10, starshipCor[1]);
+
   }
 };
 

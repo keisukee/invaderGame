@@ -24,3 +24,9 @@ ul {
   top: 1000px;
   left: 30px;
 }
+
+#starship {
+  position: absolute;
+  top: 500px;
+  left: 50px;
+}
