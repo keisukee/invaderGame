@@ -46,10 +46,10 @@ for (let i = 0; i < invaders.length; i++) {
 
 function invaderMove(element) {
   setTimeout(function () {
-    distance += 10;
-    move(element, getRandomInt(100) * 10, distance);
+    distance += 1;
+    move(element, element.style.left, distance);
     invaderMove(element);
-  }, 300);
+  }, 1000);
 }
 
 function bulletMove(element, x, y) {
@@ -99,8 +99,6 @@ document.onkeydown = function (e){
   }
 };
 
-// let targetElement = document.getElementById('invader1');
-// detectLocation(targetElement);
 function detectLocation(targetElement) {
   setInterval( function() {
     let clientRect = targetElement.getBoundingClientRect();
